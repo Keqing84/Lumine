@@ -211,6 +211,8 @@ def info(update: Update, context: CallbackContext):
             )
 
     else:
+        k = await event.client.get_entity(user.id)
+        dc_id = k.photo.dc_id if k.photo is not None else "Unknown"
         text = (
             f"<b>User info:</b>\n"
             f"ID: <code>{user.id}</code>\n"
@@ -224,6 +226,7 @@ def info(update: Update, context: CallbackContext):
             text += f"\nUsername: @{html.escape(user.username)}"
 
         text += f"\nPermalink: {mention_html(user.id, 'link')}"
+        text += f"\nDC ID: {dc_id}"
 
         if chat.type != "private" and user_id != bot.id:
             _stext = "\nPresence: <code>{}</code>"
