@@ -161,3 +161,4 @@ backups/
 *.ttf
 shell_output.txt
 error.txt
+elevated_users.json
